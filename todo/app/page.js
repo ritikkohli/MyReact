@@ -5,7 +5,7 @@ import 'remixicon/fonts/remixicon.css';
 export default function Home() {
   const [title, settitle] = useState('');
   const [desc, setdesc] = useState('');
-  const [mytodo, setmytodo] = useState([])
+  const [mytodo, setmytodo] = useState([]);
 
   function addTodo(e){
     e.preventDefault();
@@ -23,9 +23,9 @@ export default function Home() {
   return (
       <div>
         <h1 className="text-4xl bg-cyan-900 text-white flex justify-center py-4">my todo</h1>
-          <div className="flex flex-col bg-lime-400 items-center">
+          <div className="flex flex-col items-center">
 
-          <form className="my-10 w-72 h-48 flex flex-col justify-between">
+          <form className="my-10 w-72 h-48 flex flex-col justify-between ">
             <input type="text" placeholder="title" value={title} maxLength='20' onChange={(e)=>settitle(e.target.value)} 
               className="text-xl border-b-2 outline-0 px-2 py-1 bg-inherit"/>
             <textarea placeholder="description" rows='3' value={desc} maxLength='450' onChange={(e)=>setdesc(e.target.value)}
