@@ -5,3 +5,8 @@
 html,body{
     background-color: #272829;
 }
+.bg-img{
+    background-image: url('https://img.freepik.com/premium-vector/completed-vector-stamp_116137-4064.jpg?w=2000');
+    background-position: center;
+    background-size: cover;
+}
