@@ -14,4 +14,5 @@ pnpm dev
 bun dev
 ```
 
-![image](https://github.com/ritikkohli/MyReact/assets/108524122/f6941967-c481-4367-b9c2-05354afa7428)
+![image](https://github.com/ritikkohli/MyReact/assets/108524122/84f02ca8-c40f-45f8-91ce-b9415c266044)
+
