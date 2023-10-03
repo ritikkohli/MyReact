@@ -1,5 +1,5 @@
 "use client"
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import 'remixicon/fonts/remixicon.css';
 import {ToastContainer, toast} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
@@ -10,6 +10,14 @@ export default function Home() {
   const [desc, setdesc] = useState('');
   const [mytodo, setmytodo] = useState([]);
 
+  useEffect(() => {
+    let temp = localStorage.getItem('todo');
+    if(temp){
+      setmytodo(JSON.parse(temp));
+    }
+  },[])
+
+ 
   // ---------- add todo function ----------
   function addTodo(e){
     e.preventDefault();
@@ -26,6 +34,8 @@ export default function Home() {
         });
     }else{
       setmytodo([...mytodo,{title,desc,isCompleted:false}]);
+      let temp = [...mytodo,{title:title,desc:desc,isCompleted:false}];
+      localStorage.setItem('todo',JSON.stringify(temp));
       settitle('');
       setdesc('');
       toast.info('task added', {
@@ -47,16 +57,17 @@ export default function Home() {
     let temp = [...mytodo];
     temp.splice(id,1);
     setmytodo(temp);
-      toast.error('task deleted', {
-        position: "top-right",
-        autoClose: 1500,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+    localStorage.setItem('todo',JSON.stringify(temp));
+    toast.error('task deleted', {
+      position: "top-right",
+      autoClose: 1500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
   }
 
   // --------- complete todo function ----------
@@ -66,6 +77,7 @@ export default function Home() {
       let temp = [...mytodo];
       temp[id].isCompleted = true;
       setmytodo(temp);
+      localStorage.setItem('todo',JSON.stringify(mytodo));
       toast.success('task completed', {
         position: "top-right",
         autoClose: 1500,
